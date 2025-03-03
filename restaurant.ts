@@ -1,3 +1,9 @@
+
+type Pizza = {
+    name: string;
+    price: number;
+}
+
 let menu = [
     { name: "Margherita", price: 8 },
     { name: "Pepperoni", price: 10 },
@@ -5,8 +11,8 @@ let menu = [
     { name: "Veggie", price: 9 },
 ]
 
-var cashInRegister = 100
-var nextOrderId = 1
+var cashInRegister: number = 100
+var nextOrderId: number = 1
 let orderQueue = [
     {id: 0,
     pizza: {
@@ -17,11 +23,12 @@ let orderQueue = [
     },
 ]
 
-function addNewPizza(pizzaObj) {
+function addNewPizza(pizzaObj: Pizza) {
     menu.push(pizzaObj)
 }
 
-function placeOrder(pizzaName) {
+function placeOrder(pizzaName: string)
+{
     const selectedPizza = menu.find(pizzaObj => pizzaObj.name === pizzaName)
     if (!selectedPizza)
         return ("Error!")
@@ -31,7 +38,7 @@ function placeOrder(pizzaName) {
     return newOrder
 }
 
-function completeOrder(orderId) {
+function completeOrder(orderId: number) {
     const order = orderQueue.find(order => order.id === orderId)
     if (!order)
         return "Error!"
@@ -39,12 +46,12 @@ function completeOrder(orderId) {
     return order
 }
 
-addNewPizza({ name: "Chicken Bacon Ranch", cost: 12 })
-addNewPizza({ name: "BBQ Chicken", cost: 12 })
-addNewPizza({ name: "Spicy Sausage", cost: 11 })
+addNewPizza({ name: "Chicken Bacon Ranch", price:  12 })
+addNewPizza({ name: "BBQ Chicken", price: 12 })
+addNewPizza({ name: "Spicy Sausage", price: 11 })
 
 placeOrder("Chicken Bacon Ranch")
-completeOrder("1")
+completeOrder(1)
 
 console.log("Menu:", menu)
 console.log("Cash in register:", cashInRegister)
@@ -60,7 +67,7 @@ console.log("Order queue:", orderQueue)
 // function placeOrder(pizzaName)
 // {
 //     var i = 0;
-//     var orderObj;
+//     var orderOb j;
 //    while(menu[i])
 //    { 
 //         if (!menu[i].name.localeCompare("pizzaName"))
